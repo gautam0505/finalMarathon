@@ -18,7 +18,9 @@ export default function PaymentPage() {
   const { ticketQuantities, getTotal } = useRegistrationStore()
   const [upiLink, setUpiLink] = useState('')
   const [transactionId, setTransactionId] = useState('')
+  const [name, setName] = useState('')
   const [userTransactionId, setUserTransactionId] = useState('')
+  const [number, setNumber] = useState('')
   const [transactionScreenshot, setTransactionScreenshot] = useState<File | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { total, discount } = getTotal()
@@ -99,23 +101,29 @@ export default function PaymentPage() {
               </div>
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <Label htmlFor="transactionId">Transaction ID</Label>
+                  <Label htmlFor="name">Name</Label>
                   <Input
-                    id="transactionId"
-                    value={userTransactionId}
-                    onChange={(e) => setUserTransactionId(e.target.value)}
+                    id="Name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
                     required
                   />
                 </div>
                 <div>
-                  <Label htmlFor="transactionScreenshot">Transaction Screenshot</Label>
+                  <Label htmlFor="phoneNumber">Phone Number</Label>
                   <Input
+                    id="transactionNumber"
+                    value={number}
+                    onChange={(e) => setNumber(e.target.value)}
+                    required
+                  />
+                  {/* <Input
                     id="transactionScreenshot"
                     type="file"
                     accept="image/*"
                     onChange={(e) => setTransactionScreenshot(e.target.files?.[0] || null)}
                     required
-                  />
+                  /> */}
                 </div>
                 <Button type="submit" className="w-full">
                   Submit Payment Details
